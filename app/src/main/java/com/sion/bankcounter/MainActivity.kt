@@ -1,5 +1,6 @@
 package com.sion.bankcounter
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -48,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setObserver() {
         lifecycleScope.launch {
             viewModel.waitingState.observe(this@MainActivity) {

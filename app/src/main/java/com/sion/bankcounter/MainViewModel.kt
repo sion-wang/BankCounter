@@ -8,14 +8,11 @@ import com.sion.bankcounter.intent.MainIntent
 import com.sion.bankcounter.model.Counter
 import com.sion.bankcounter.model.Status
 import com.sion.bankcounter.state.CounterState
-import com.sion.bankcounter.state.MainState
 import com.sion.bankcounter.state.NextState
 import com.sion.bankcounter.state.WaitingState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.consumeAsFlow
 import kotlinx.coroutines.launch
@@ -71,7 +68,6 @@ class MainViewModel: ViewModel() {
     }
 
     private fun doJob(counter: Counter, number: Int) {
-        println("@@doJob: $counter, $number")
         _waitingState.postValue(WaitingState.ModifiedState(waitings.size))
         counter.status = Status.Processing(number)
         _counterState.postValue(CounterState.ModifiedState(counter))
