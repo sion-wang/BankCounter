@@ -35,7 +35,7 @@ class MainViewModel: ViewModel() {
 
 
     init {
-        repeat(5) { idles.add(Counter(id = it)) }
+        repeat(COUNTER_NUM) { idles.add(Counter(id = it)) }
         handleIntent()
         activateJob()
     }

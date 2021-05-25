@@ -30,17 +30,20 @@ class MainActivity : AppCompatActivity() {
         setObserver()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setupUI() {
-        processingTVs.add(binding.tvProcessing1)
-        processingTVs.add(binding.tvProcessing2)
-        processingTVs.add(binding.tvProcessing3)
-        processingTVs.add(binding.tvProcessing4)
-        processingTVs.add(binding.tvProcessing5)
-        processedTVs.add(binding.tvProcessed1)
-        processedTVs.add(binding.tvProcessed2)
-        processedTVs.add(binding.tvProcessed3)
-        processedTVs.add(binding.tvProcessed4)
-        processedTVs.add(binding.tvProcessed5)
+        repeat(COUNTER_NUM) {
+            val counterLayout = layoutInflater.inflate(R.layout.layout_counter, binding.llCounter, false)
+            val counterTV = counterLayout.findViewById<TextView>(R.id.tv_counter)
+            val processingTV = counterLayout.findViewById<TextView>(R.id.tv_processing)
+            val processedTV = counterLayout.findViewById<TextView>(R.id.tv_processed)
+            counterTV.text = "counter${it+1}"
+            processingTV.text = "idle"
+            processingTVs.add(processingTV)
+            processedTVs.add(processedTV)
+            binding.llCounter.addView(counterLayout)
+        }
+
 
         binding.btNext.setOnClickListener {
             lifecycleScope.launch {

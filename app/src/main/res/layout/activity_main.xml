@@ -15,183 +15,220 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.25"/>
+            app:layout_constraintGuide_percent="0.25" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_third"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.50"/>
+            app:layout_constraintGuide_percent="0.50" />
 
         <TextView
             android:id="@+id/tv_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="counter"
             android:layout_margin="10dp"
+            android:text="counter"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <TextView
-            android:id="@+id/tv_counter1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="counter1"
-            app:layout_constraintStart_toStartOf="@id/tv_counter"
-            app:layout_constraintTop_toTopOf="@id/tv_processed1"/>
-        <TextView
-            android:id="@+id/tv_counter2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="counter2"
-            app:layout_constraintStart_toStartOf="@id/tv_counter1"
-            app:layout_constraintTop_toTopOf="@id/tv_processed2"/>
-        <TextView
-            android:id="@+id/tv_counter3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="counter3"
-            app:layout_constraintStart_toStartOf="@id/tv_counter2"
-            app:layout_constraintTop_toTopOf="@id/tv_processed3"/>
-        <TextView
-            android:id="@+id/tv_counter4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="counter4"
-            app:layout_constraintStart_toStartOf="@id/tv_counter3"
-            app:layout_constraintTop_toTopOf="@id/tv_processed4"/>
-        <TextView
-            android:id="@+id/tv_counter5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="counter5"
-            app:layout_constraintStart_toStartOf="@id/tv_counter4"
-            app:layout_constraintTop_toTopOf="@id/tv_processed5"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_processing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="processing"
             android:layout_margin="10dp"
+            android:text="processing"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/gl_second"
-            app:layout_constraintTop_toTopOf="parent"/>
-        <TextView
-            android:id="@+id/tv_processing1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="idle"
-            app:layout_constraintStart_toStartOf="@id/tv_processing"
-            app:layout_constraintTop_toTopOf="@id/tv_processed1"/>
-        <TextView
-            android:id="@+id/tv_processing2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="idle"
-            app:layout_constraintStart_toStartOf="@id/tv_processing"
-            app:layout_constraintTop_toTopOf="@id/tv_processed2"/>
-        <TextView
-            android:id="@+id/tv_processing3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="idle"
-            app:layout_constraintStart_toStartOf="@id/tv_processing"
-            app:layout_constraintTop_toTopOf="@id/tv_processed3"/>
-        <TextView
-            android:id="@+id/tv_processing4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="idle"
-            app:layout_constraintStart_toStartOf="@id/tv_processing"
-            app:layout_constraintTop_toTopOf="@id/tv_processed4"/>
-        <TextView
-            android:id="@+id/tv_processing5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="idle"
-            app:layout_constraintStart_toStartOf="@id/tv_processing"
-            app:layout_constraintTop_toTopOf="@id/tv_processed5"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_processed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="processed"
             android:layout_margin="10dp"
+            android:text="processed"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/gl_third"
-            app:layout_constraintTop_toTopOf="parent"/>
-        <TextView
-            android:id="@+id/tv_processed1"
-            android:layout_width="0dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_counter"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            app:layout_constraintStart_toStartOf="@id/tv_processed"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_processed"
-            tools:text="1"/>
-        <TextView
-            android:id="@+id/tv_processed2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            app:layout_constraintStart_toStartOf="@id/tv_processed"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_processed1"
-            tools:text="1"/>
-        <TextView
-            android:id="@+id/tv_processed3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            app:layout_constraintStart_toStartOf="@id/tv_processed"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_processed2"
-            tools:text="1"/>
-        <TextView
-            android:id="@+id/tv_processed4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            app:layout_constraintStart_toStartOf="@id/tv_processed"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_processed3"
-            tools:text="1"/>
-        <TextView
-            android:id="@+id/tv_processed5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            app:layout_constraintStart_toStartOf="@id/tv_processed"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_processed4"
-            tools:text="1"/>
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_processed" />
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_counter"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="counter"-->
+        <!--            android:layout_margin="10dp"-->
+        <!--            android:textStyle="bold"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"/>-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_counter1"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="counter1"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/tv_counter"-->
+        <!--            app:layout_constraintTop_toTopOf="@id/tv_processed1"/>-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_counter2"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="counter2"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/tv_counter1"-->
+        <!--            app:layout_constraintTop_toTopOf="@id/tv_processed2"/>-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_counter3"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="counter3"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/tv_counter2"-->
+        <!--            app:layout_constraintTop_toTopOf="@id/tv_processed3"/>-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_counter4"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="counter4"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/tv_counter3"-->
+        <!--            app:layout_constraintTop_toTopOf="@id/tv_processed4"/>-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_counter5"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="counter5"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/tv_counter4"-->
+        <!--            app:layout_constraintTop_toTopOf="@id/tv_processed5"/>-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_processing"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="processing"-->
+        <!--            android:layout_margin="10dp"-->
+        <!--            android:textStyle="bold"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/gl_second"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"/>-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_processing1"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="idle"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/tv_processing"-->
+        <!--            app:layout_constraintTop_toTopOf="@id/tv_processed1"/>-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_processing2"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="idle"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/tv_processing"-->
+        <!--            app:layout_constraintTop_toTopOf="@id/tv_processed2"/>-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_processing3"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="idle"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/tv_processing"-->
+        <!--            app:layout_constraintTop_toTopOf="@id/tv_processed3"/>-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_processing4"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="idle"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/tv_processing"-->
+        <!--            app:layout_constraintTop_toTopOf="@id/tv_processed4"/>-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_processing5"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="idle"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/tv_processing"-->
+        <!--            app:layout_constraintTop_toTopOf="@id/tv_processed5"/>-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_processed"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="processed"-->
+        <!--            android:layout_margin="10dp"-->
+        <!--            android:textStyle="bold"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/gl_third"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"/>-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_processed1"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="30dp"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/tv_processed"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/tv_processed"-->
+        <!--            tools:text="1"/>-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_processed2"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="30dp"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/tv_processed"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/tv_processed1"-->
+        <!--            tools:text="1"/>-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_processed3"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="30dp"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/tv_processed"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/tv_processed2"-->
+        <!--            tools:text="1"/>-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_processed4"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="30dp"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/tv_processed"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/tv_processed3"-->
+        <!--            tools:text="1"/>-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_processed5"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="30dp"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/tv_processed"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/tv_processed4"-->
+        <!--            tools:text="1"/>-->
 
         <TextView
             android:id="@+id/tv_waiting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="waitings: 0"
-            app:layout_constraintStart_toStartOf="@id/tv_counter5"
-            app:layout_constraintTop_toTopOf="@id/bt_next"
-            app:layout_constraintBottom_toBottomOf="@id/bt_next"/>
+            android:layout_marginStart="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/bt_next"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/bt_next" />
 
         <Button
             android:id="@+id/bt_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
             android:layout_marginTop="80dp"
+            android:layout_marginEnd="10dp"
             android:text="next:1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_processed5"/>
+            app:layout_constraintTop_toBottomOf="@id/ll_counter" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
 </ScrollView>
