@@ -4,7 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.sion.bankcounter.databinding.ActivityMainBinding
+import com.sion.bankcounter.intent.MainIntent
+import com.sion.bankcounter.model.Status
+import com.sion.bankcounter.state.CounterState
+import com.sion.bankcounter.state.NextState
+import com.sion.bankcounter.state.WaitingState
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels()
@@ -35,32 +42,55 @@ class MainActivity : AppCompatActivity() {
         processedTVs.add(binding.tvProcessed5)
 
         binding.btNext.setOnClickListener {
-            viewModel.next()
+            lifecycleScope.launch {
+                viewModel.mainIntent.send(MainIntent.NextClicked)
+            }
         }
     }
 
     private fun setObserver() {
-        viewModel.waitingStatus.observe(this) {
-            binding.tvWaiting.text = "waitings: $it"
-        }
-
-        viewModel.nextStatus.observe(this) {
-            binding.btNext.text = "NEXT:$it"
-        }
-
-        viewModel.counterStatus.observe(this) {
-            val processingTv = processingTVs[it.id]
-            val processedTv = processedTVs[it.id]
-            when(it.status) {
-                is Status.Idle -> processingTv.text = "idle"
-                is Status.Processing -> processingTv.text = (it.status as Status.Processing).number.toString()
-            }
-            processedTv.text = with(it.processed) {
-                var result = ""
-                this.forEachIndexed { index, value ->
-                    result += if (index == 0) "$value" else ",$value"
+        lifecycleScope.launch {
+            viewModel.waitingState.observe(this@MainActivity) {
+                when (it) {
+                    is WaitingState.InitState -> {
+                    }
+                    is WaitingState.ModifiedState -> {
+                        binding.tvWaiting.text = "waitings: ${it.count}"
+                    }
                 }
-                result
+            }
+
+            viewModel.nextState.observe(this@MainActivity) {
+                when (it) {
+                    is NextState.InitState -> {
+                    }
+                    is NextState.IncreaseState -> {
+                        binding.btNext.text = "NEXT:${it.next}"
+                    }
+                }
+            }
+
+            viewModel.counterState.observe(this@MainActivity) {
+                when (it) {
+                    is CounterState.InitState -> {
+                    }
+                    is CounterState.ModifiedState -> {
+                        val processingTv = processingTVs[it.counter.id]
+                        val processedTv = processedTVs[it.counter.id]
+                        when (it.counter.status) {
+                            is Status.Idle -> processingTv.text = "idle"
+                            is Status.Processing -> processingTv.text =
+                                (it.counter.status as Status.Processing).number.toString()
+                        }
+                        processedTv.text = with(it.counter.processed) {
+                            var result = ""
+                            this.forEachIndexed { index, value ->
+                                result += if (index == 0) "$value" else ",$value"
+                            }
+                            result
+                        }
+                    }
+                }
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.sion.bankcounter
+package com.sion.bankcounter.model
 
 sealed class Status {
     object Idle: Status()
