@@ -10,15 +10,14 @@ import com.sion.bankcounter.model.Status
 import com.sion.bankcounter.state.CounterState
 import com.sion.bankcounter.state.NextState
 import com.sion.bankcounter.state.WaitingState
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.consumeAsFlow
-import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 class MainViewModel: ViewModel() {
+    private var scheduleJob: Job? = null
     private val idles: ArrayList<Counter> = arrayListOf()
     private val waitings: ArrayList<Int> = arrayListOf()
     private var next = 1
@@ -32,12 +31,9 @@ class MainViewModel: ViewModel() {
     private val _nextState = MutableLiveData<NextState>(NextState.InitState)
     val nextState: LiveData<NextState> = _nextState
 
-
-
     init {
         repeat(COUNTER_NUM) { idles.add(Counter(id = it)) }
         handleIntent()
-        activateJob()
     }
 
     private fun handleIntent() {
@@ -50,19 +46,21 @@ class MainViewModel: ViewModel() {
         }
     }
 
-    private fun activateJob() {
-        viewModelScope.launch(Dispatchers.Default) {
-            while(true) {
-                if (waitings.isNotEmpty() && idles.isNotEmpty()) {
-                    doJob(idles.removeAt(0), waitings.removeAt(0))
+    private fun activateScheduleJob() {
+        if (scheduleJob?.isActive != true) {
+            scheduleJob = viewModelScope.launch(Dispatchers.Default) {
+                while(waitings.size > 0) {
+                    if (idles.size > 0)  {
+                        doJob(idles.removeAt(0), waitings.removeAt(0))
+                    }
                 }
-                delay(100)
             }
         }
     }
 
     private fun next() {
         waitings.add(next++)
+        activateScheduleJob()
         _nextState.value = NextState.IncreaseState(next)
         _waitingState.value = WaitingState.ModifiedState(waitings.size)
     }
