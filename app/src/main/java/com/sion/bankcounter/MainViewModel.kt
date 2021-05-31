@@ -47,12 +47,10 @@ class MainViewModel: ViewModel() {
     }
 
     private fun activateScheduleJob() {
-        if (scheduleJob?.isActive != true) {
+        takeIf { scheduleJob?.isActive != true }?.run {
             scheduleJob = viewModelScope.launch(Dispatchers.Default) {
-                while(waitings.size > 0) {
-                    if (idles.size > 0)  {
-                        doJob(idles.removeAt(0), waitings.removeAt(0))
-                    }
+                while(waitings.isNotEmpty() && idles.isNotEmpty()) {
+                    doJob(idles.removeAt(0), waitings.removeAt(0))
                 }
             }
         }
@@ -76,6 +74,7 @@ class MainViewModel: ViewModel() {
             counter.processed.add(number)
             counter.status = Status.Idle
             idles.add(counter)
+            activateScheduleJob()
             _counterState.postValue(CounterState.ModifiedState(counter))
         }
     }
